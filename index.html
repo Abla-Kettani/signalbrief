@@ -74,7 +74,7 @@ function render(d){$('empty').classList.add('hidden');$('content').classList.rem
 $('demo').onclick=()=>{render(demo);$('report').scrollIntoView({behavior:'smooth'})};
 const ORG=/seguros|insurance|compañ|compagn|company|empresa|corporaci|corporation|banco|bank|grupo|group|s\.a\.|ltd|inc\.|gmbh|sociedad|asegurador/i;
 const normTxt=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
-const relevant=(t,q)=>{const nt=normTxt(t);return normTxt(q).split(/[^a-z0-9]+/).filter(w=>w.length>=4).some(w=>nt.includes(w))};
+const relevant=(t,q)=>{const nt=normTxt(t);if(normTxt(q).split(/[^a-z0-9]+/).filter(w=>w.length>=4).some(w=>nt.includes(w)))return true;const sq=s=>normTxt(s).replace(/[^a-z0-9]/g,'');const x=sq(t),y=sq(q);return y.length>=5&&(x.includes(y)||y.includes(x))};
 const wsum=(lang,t)=>fetch(`https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(t)}`).then(r=>r.ok?r.json():null).catch(()=>null);
 const wsearch=(lang,q)=>fetch(`https://${lang}.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(q)}&format=json&srlimit=6&origin=*`).then(r=>r.ok?r.json():null).catch(()=>null).then(d=>d&&d.query&&d.query.search||[]);
 const orgish=w=>w&&w.extract&&w.type!=='disambiguation'&&ORG.test((w.title||'')+' '+(w.description||'')+' '+w.extract);
