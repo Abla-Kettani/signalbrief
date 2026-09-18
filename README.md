@@ -8,7 +8,7 @@ I am a finance graduate moving into tech sales. I built SignalBrief as an SDR in
 
 ## How v1 works
 
-- **Wikipedia REST API** supplies a company description because it is free, requires no key and links back to a public source.
+- **Wikipedia REST API (English and Spanish)** supplies a company description because it is free, requires no key and links back to a public source. If the typed name is not an exact article title, a full-text Wikipedia search looks for the right company article (for example, both "Santalucía" and "Santa Lucia" resolve to the Spanish insurer's article).
 - **GDELT DOC API** searches recent public news because it is free and supports date-bounded queries.
 - **Transparent JavaScript rules** suggest personas and pains because a small v1 should be understandable rather than hide logic behind a paid black box.
 - **GitHub Pages** hosts the app because it is free for a static portfolio project.
@@ -35,7 +35,7 @@ Open `http://localhost:8000`.
 
 ## Limits
 
-- Wikipedia may not have a page for every company.
+- Wikipedia may not have a page for every company; when no article can be matched confidently, the app says so instead of guessing.
 - GDELT coverage and browser access vary, so missing results do not mean there was no news.
 - Personas, pains and buying triggers are research hypotheses that a salesperson must validate.
 - v1 does not scrape LinkedIn, identify named contacts or send outreach.
