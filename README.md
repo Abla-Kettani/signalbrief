@@ -37,5 +37,6 @@ Open `http://localhost:8000`.
 
 - Wikipedia may not have a page for every company; when no article can be matched confidently, the app says so instead of guessing.
 - GDELT coverage and browser access vary, so missing results do not mean there was no news.
+- News results are kept only when the article title mentions the searched company name; otherwise the app reports that it found no sourced news instead of showing unrelated articles.
 - Personas, pains and buying triggers are research hypotheses that a salesperson must validate.
 - v1 does not scrape LinkedIn, identify named contacts or send outreach.
