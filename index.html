@@ -89,11 +89,11 @@ const start=new Date(Date.now()-90*864e5).toISOString().slice(0,10).replaceAll('
 const end=new Date().toISOString().slice(0,10).replaceAll('-','')+'235959';
 const url=`https://api.gdeltproject.org/api/v2/doc/doc?query=${encodeURIComponent('"'+q+'"')}&mode=artlist&maxrecords=5&format=json&startdatetime=${start}&enddatetime=${end}&sort=datedesc`;
 const gdelt=await fetch(url).then(r=>r.ok?r.json():null).catch(()=>null);
-const articles=(gdelt?.articles||[]).filter(a=>a.url&&a.title).slice(0,5);
+const articles=(gdelt?.articles||[]).filter(a=>a.url&&a.title).slice(0,8);const toks=normTxt(q).split(/[^a-z0-9]+/).filter(w=>w.length>=4);const relArts=articles.filter(a=>toks.length===0||toks.some(w=>normTxt(a.title||'').includes(w))).slice(0,5);
 const desc=wiki?.extract||`No reliable company description was found for “${q}” in the free source used by this prototype.`;
 const src=[];
 if(wiki?.content_urls?.desktop?.page)src.push([`Wikipedia (${f.lang}) · ${wiki.title}${f.via==='search'?' · matched by full-text search':''}`,wiki.content_urls.desktop.page]);
-articles.forEach(a=>src.push([a.title,a.url]));
-render({name:q,summary:desc,metrics:[['Sector',(wiki&&wiki.description)||'Not verified'],['Company size','Not verified'],['Research mode','Free public sources']],news:articles.map(a=>[a.title,`${a.domain||'Publisher'} · ${a.seendate||'date unavailable'}`,a.url]),sources:src.length?src:[['No source found','https://www.google.com/search?q='+encodeURIComponent(q)] ]})}finally{$('report').classList.remove('loading');
+relArts.forEach(a=>src.push([a.title,a.url]));
+render({name:q,summary:desc,metrics:[['Sector',(wiki&&wiki.description)||'Not verified'],['Company size','Not verified'],['Research mode','Free public sources']],news:relArts.map(a=>[a.title,`${a.domain||'Publisher'} · ${a.seendate||'date unavailable'}`,a.url]),sources:src.length?src:[['No source found','https://www.google.com/search?q='+encodeURIComponent(q)] ]})}finally{$('report').classList.remove('loading');
 $('report').scrollIntoView({behavior:'smooth'})}};
 </script></body></html>
