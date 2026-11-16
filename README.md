@@ -15,6 +15,12 @@ I am a finance graduate moving into tech sales. I built SignalBrief as an SDR in
 
 Facts and sales hypotheses are displayed separately. If the free sources do not verify a field, the app says "Not verified."
 
+## TransPerfect: manually verified official-source profile
+
+Entering TransPerfect selects a manually checked profile dated 16 November 2026. It is clearly labeled in the interface and is not automatic real-time enrichment. This profile uses official company pages for its description, company-reported team size and footprint, historical 2025 revenue, and dated press releases. The source list links each item. Team members is the company's wording, not a verified employee count. Historical 2025 results are not current-year revenue. Curated news falls out of the 90-day news display as it ages; the profile itself does not refresh automatically.
+
+Other company searches still use Wikipedia and GDELT. Persona suggestions and outreach drafts are generic hypotheses, not verified priorities or buying intent. They no longer assert recent activity or growth without evidence. Missing news results may reflect source coverage or access, not absence of news.
+
 ## Demo: Reale Seguros
 
 The built-in demo is based on official Reale sources. It describes Reale Seguros as the Spanish non-life insurer in Reale Group, with almost 1,000 employees, 341 agencies and more than 1.5 million policyholders. It cites current company activity around electric-mobility education and a multilingual expat proposition. Suggested personas and pains are labeled as hypotheses, not company facts.
